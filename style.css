@@ -1,0 +1,217 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: #274eb9;
+  color: white;
+}
+
+button {
+  margin: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid #a64027;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.header-img, .footer-img {
+  width: 100%;
+  display: block; /* 画像下の余白対策 */
+}
+
+#start-button {
+  margin: 20px auto;
+  padding: 14px 32px;
+  font-size: 20px;
+  display: block;
+}
+
+#start-button:not(:disabled) {
+  background-color: #a64027;
+  color: white;
+}
+#start-button:disabled {
+  background-color: #ccc;
+  border-color: #999;
+  color: #888;
+}
+
+#course-buttons {
+  margin-top: 15px; /* スタートボタンからの距離 */
+  display: grid;
+  justify-items: center; /* ボタンを中央に配置 */
+  gap: 12px; /* ボタン間の隙間 */
+}
+
+.course-button {
+  width: 80vw; /* 横幅を画面の80%に */
+  max-width: 400px; /* PCでの最大幅 */
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  
+  /* 非選択時の色 */
+  background-color: #ffffff;
+  color: #888888;
+  border: 2px solid #ccc;
+}
+
+/* 選択された時の色 */
+.course-button.selected {
+  background-color: #ffd700; /* 背景：黄色 (gold) */
+  color: #000000; /* 文字：黒 */
+  border-color: #daa520; /* 枠線：濃い黄色 */
+}
+
+/* 削除モード用 */
+.course-button-wrapper {
+  position: relative;
+  width: 80vw;
+  max-width: 400px;
+}
+.delete-icon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 28px;
+  height: 28px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+#utility-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#utility-buttons button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+  background-color: white;
+  color: #a64027;
+}
+
+#delete-toggle-button.active {
+  background-color: #ff4d4d;
+  color: white;
+  border-color: #ff4d4d;
+}
+
+/* --- ▼▼▼ ここからがテーブルの修正箇所 ▼▼▼ --- */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+table {
+  /* 各列の幅を厳密に適用するための設定 */
+  table-layout: fixed; 
+  width: 900px; /* 100 + 200 + 500 + 100 = 900px */
+  border-collapse: collapse;
+  background-color: white;
+  color: black;
+}
+
+td, th {
+  border: 1px solid #aaa;
+  padding: 8px;
+  text-align: center;
+  /* 文字がはみ出た場合に省略記号(...)で表示する設定 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+td input {
+  width: 100%; /* セルの幅いっぱいに広げる */
+  padding: 5px;
+  box-sizing: border-box; /* paddingを含めた幅で計算 */
+}
+
+/* 1列目: prize */
+#sheet-table th:nth-child(1),
+#sheet-table td:nth-child(1) {
+  width: 50px;
+}
+
+/* 2列目: strings */
+#sheet-table th:nth-child(2),
+#sheet-table td:nth-child(2) {
+  width: 100px;
+}
+
+/* 3列目: image */
+#sheet-table th:nth-child(3),
+#sheet-table td:nth-child(3) {
+  width: 300px;
+}
+
+/* 4列目: quantity */
+#sheet-table th:nth-child(4),
+#sheet-table td:nth-child(4) {
+  width: 50px;
+}
+
+/* --- ▲▲▲ ここまでがテーブルの修正箇所 ▲▲▲ --- */
+
+
+.footer-img {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+#result-screen, #register-screen {
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: none; /* JSで制御 */
+}
+
+#result-image {
+  max-width: 100%;
+  height: auto;
+  margin: 20px auto;
+  display: block;
+}
+
+#anime-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+

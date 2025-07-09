@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>景品抽選アプリ</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <header><img src="images/title_001.png" alt="ヘッダー画像" class="header-img"></header>
+
+  <div id="top-screen">
+    <button id="start-button" disabled>スタート</button>
+    <!-- コースボタンのコンテナをスタートボタンの下に移動 -->
+    <div id="course-buttons"></div>
+    <div id="utility-buttons">
+      <button id="register-button">景品登録</button>
+      <button id="stock-button">景品のこり</button>
+      <button id="delete-toggle-button">削除モード</button>
+    </div>
+  </div>
+
+  <!-- 景品登録画面（最初は非表示） -->
+  <section id="register-screen">
+    <label for="course-name">コース名：</label>
+    <input id="course-name" type="text" placeholder="例：1万円コース"><br><br>
+    <button id="save-button">保存</button>
+    <button id="back-register-button">戻る</button>
+
+    <!-- ▼▼▼ ここからが修正箇所 ▼▼▼ -->
+    <!-- テーブルをdivで囲んで横スクロール可能にする -->
+    <div class="table-container">
+      <table id="sheet-table">
+        <thead>
+          <tr><th>prize</th><th>strings</th><th>image</th><th>quantity</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><input value="特賞"></td><td><input></td><td><input type="file" accept="image/*"></td><td><input type="number" value="1"></td></tr>
+          <tr><td><input value="A賞"></td><td><input></td><td><input type="file" accept="image/*"></td><td><input type="number" value="1"></td></tr>
+          <tr><td><input value="B賞"></td><td><input></td><td><input type="file" accept="image/*"></td><td><input type="number" value="1"></td></tr>
+          <tr><td><input value="C賞"></td><td><input></td><td><input type="file" accept="image/*"></td><td><input type="number" value="1"></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- ▲▲▲ ここまでが修正箇所 ▲▲▲ -->
+
+  </section>
+
+  <!-- 結果表示画面（最初は非表示） -->
+  <section id="result-screen">
+    <h2 id="result-prize"></h2>
+    <p id="result-strings"></p>
+    <img id="result-image">
+    <button id="back-result-button">戻る</button>
+  </section>
+
+  <footer><img src="images/footer_001.png" alt="フッター画像" class="footer-img"></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
